@@ -1,5 +1,4 @@
 import Footer from "./Components/Layout/Footer";
-import Footer from "./Components/Layout/Footer";
 import LoginPage from "./Pages/SignIn";
 
 function App() {

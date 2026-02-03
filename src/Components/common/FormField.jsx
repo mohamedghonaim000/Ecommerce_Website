@@ -21,7 +21,7 @@ export default function FormField({
           onChange={onChange}
           placeholder={placeholder}
           className="w-full px-4 py-2 border border-gray-300 rounded-md 
-          focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+          focus:ring-2 focus:ring-[var(--primary-color)] focus:outline-none transition"
         />
 
         {rightElement && (

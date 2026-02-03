@@ -34,14 +34,14 @@ export default function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
+            placeholder="Enter Your Password.."
             required
           />
 
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-300"
+            className="w-full bg-[var(--primary-color)] text-white py-2 rounded-md font-semibold hover:bg-[var(--hover-color)] transition duration-300"
           >
             Login
           </button>
@@ -50,7 +50,7 @@ export default function LoginPage() {
         {/* Footer */}
         <p className="mt-8 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <a href="#" className="font-medium text-blue-600 hover:underline">
+          <a href="#" className="font-medium text-[var(--primary-color)] hover:underline">
             Sign Up
           </a>
         </p>
