@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className='bg-white px-6 md:px-20 py-16 border-t'>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10'>
             <div>
-                <h2 className='text-xl font-bold mb-10'>Funiro.</h2>
+                <h2 className='text-xl font-bold mb-10'>Shop Store</h2>
                 <p className='text-gray-400 leading-6'> 400 University Drive Suite 200<br />
             Coral Gables,<br />
             FL 33134 USA</p>
