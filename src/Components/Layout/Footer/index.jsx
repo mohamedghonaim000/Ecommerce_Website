@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 export default function Footer() {
     return (
@@ -16,16 +15,16 @@ export default function Footer() {
                 <h3 className='text-gray-400 font-medium mb-10'>Links</h3>
                 <ul className='space-y-6'>
                     <li >
-                        <Link to='/' className='hover:text-gray-500 font-medium'>Home</Link>
+                        Home
                     </li>
                     <li>
-                        <Link to='/shop'  className='hover:text-gray-500 font-medium'>Shop</Link>
+                        Shop
                     </li>
                     <li>
-                        <Link to='/about'  className='hover:text-gray-500 font-medium'>About</Link>
+                        About
                     </li>
                     <li>
-                        <Link to='/contact'  className='hover:text-gray-500 font-medium'>Contact</Link>
+                        Contact
                     </li>
                 </ul>
             </div>
@@ -46,7 +45,7 @@ export default function Footer() {
 
         </div>
         <div className="border-t mt-14 pt-6">
-        2023 funiro. All rights reserved
+        2026 Shop Store. All rights reserved
         </div>
 
     </footer>
