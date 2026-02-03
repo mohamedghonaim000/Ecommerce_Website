@@ -1,13 +1,16 @@
-import { useState } from "react";
 import FormField from "../../Components/common/FormField";
 import SecureField from "../../Components/common/SecureField";
+import { useForm } from "react-hook-form";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const {handleSubmit, register , formState:{errors}}=useForm()
+
+  const onSubmit = (data) => {
+    console.log(data);
+    
+    
   };
 
   return (
@@ -17,26 +20,40 @@ export default function LoginPage() {
           Login{" "}
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Email Field */}
           <FormField
             label="Email"
             type="email"
             placeholder="name@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            {...register("email",{
+              required:"The Email Is Required",
+              pattern:{
+                value:/^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message:"Invalid Email Format"
+              }
+            })}
           />
+           {errors.email && (
+              <small className="text-red-600">{errors.email.message}</small>
+            )}
 
           {/* Password Field */}
           <SecureField
             label="Password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter Your Password.."
-            required
+            {...register("password", {
+                required: "Password Is Required",
+                minLength: {
+                  value: 6,
+                  message: "The password Length Must be More than 5 letters",
+                },
+              })}
           />
+          {errors.password && (
+              <small className="text-red-600">{errors.password.message}</small>
+            )}
+
 
           {/* Login Button */}
           <button
@@ -46,6 +63,7 @@ export default function LoginPage() {
             Login
           </button>
         </form>
+        
 
         {/* Footer */}
         <p className="mt-8 text-center text-sm text-gray-600">

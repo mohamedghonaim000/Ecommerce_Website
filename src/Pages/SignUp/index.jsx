@@ -1,18 +1,27 @@
-import React, { useState } from "react";
 import SecureField from "../../Components/common/SecureField";
 import FormField from "../../Components/common/FormField";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export default function SignUp() {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-    rePassword: "",
-    phone: "",
-  });
+    const[user , setUser]=useState({
+        userName:"",
+        email:"",
+        password:"",
+        rePassword:"",
+        phone:""
+    })
+  //   react-hook-form for validation
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const password = watch("password");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    console.log(data);
   };
   return (
     <>
@@ -21,47 +30,93 @@ export default function SignUp() {
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
             SignUp{" "}
           </h2>
-          
+
           {/* user name  */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               label="User Name"
               type="text"
               placeholder="Enter Your User Name .."
-              value={user.name}
-              onChange={(e) => setUser({ ...user, name: e.target.value })}
-              required
+              {...register("userName", {
+                required: "User Name Is Required",
+                minLength: {
+                  value: 3,
+                  message: "User Name Must Be At Least 3 Character",
+                },
+              })}
             />
+            {errors.userName && (
+              <small className="text-red-600">{errors.userName.message}</small>
+            )}
 
             {/* Email Field */}
             <FormField
               label="Email"
               type="email"
               placeholder="name@example.com"
-              value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
-              required
+              {...register("email", {
+                required: "Email Is Required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid Email Format",
+                },
+              })}
             />
+            {errors.email && (
+              <small className="text-red-600">{errors.email.message}</small>
+            )}
 
             {/* Password Field */}
             <SecureField
               label="Password"
               type="password"
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
               placeholder="Enter Your Password.."
-              required
+              {...register("password", {
+                required: "Password Is Required",
+                minLength: {
+                  value: 6,
+                  message: "The password Length Must be More than 5 letters",
+                },
+              })}
             />
+            {errors.password && (
+              <small className="text-red-600">{errors.password.message}</small>
+            )}
 
             {/* rePassword Field */}
             <SecureField
               label="Password"
               type="password"
-              value={user.rePassword}
-              onChange={(e) => setUser({ ...user, rePassword: e.target.value })}
-              placeholder="Enter Your Password.."
-              required
+              placeholder="Confirm Your Password.."
+              {...register("confirmPassword", {
+                required: "Confirm Password Is Required",
+                validate: (value) => {
+                  return value === password || "Password Didn`t Match";
+                },
+              })}
             />
+            {errors.confirmPassword && (
+              <small className="text-red-600">
+                {errors.confirmPassword.message}
+              </small>
+            )}
+
+            {/* user phone  */}
+            <FormField
+              label="phone"
+              type="text"
+              placeholder="Enter Your Phone .."
+              {...register("phone", {
+                required: "phone Is Required",
+                maxLength: {
+                  value: 11,
+                  message: "Invalid Phone Number",
+                },
+              })}
+            />
+            {errors.phone && (
+              <small className="text-red-600">{errors.phone.message}</small>
+            )}
 
             {/* signup Button */}
             <button
