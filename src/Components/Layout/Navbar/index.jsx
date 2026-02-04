@@ -8,7 +8,7 @@ import { BiLogOut } from "react-icons/bi";
 
 function Navbar() {
 
-    var pathes = ['Home', 'Categories', 'Products', 'Cart']
+    var paths = ['Home', 'Categories', 'Products', 'Cart']
     var token = localStorage.getItem('token')
     return (
         <>
@@ -19,8 +19,15 @@ function Navbar() {
                 </div>
                 <div>
                     <ul className='font-medium flex flex-col justify-center items-center sm:flex-col md:flex-row lg:flex-row gap-6'>
-                        {pathes.map((path) => {
-                            return <NavLink key={path} to='/' className={({ isActive }) => (isActive) ? "text-[var(--primary-color)] font-semibold" : "text-gray-700 hover:text-[var(--hover-color)] transition"}>{path}</NavLink>
+                        {paths.map((path) => {
+                            return <NavLink key={path} to={`/${path.toLowerCase()}`}
+                                className={({ isActive }) => {
+                                    (isActive) ? "text-[var(--primary-color)] font-semibold"
+                                        : "text-gray-700 hover:text-[var(--hover-color)] transition"
+                                }
+                                }>
+                                {path}
+                            </NavLink>
                         })}
                     </ul>
                 </div>
