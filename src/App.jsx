@@ -1,15 +1,9 @@
-import Footer from "./Components/Layout/Footer";
-import Navbar from "./Components/Layout/Navbar";
-import LoginPage from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import AppRoutes from "./Routes/App_routes";
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <SignUp />
-      <LoginPage />
-      <Footer />
+      <AppRoutes />
     </>
   );
 }
