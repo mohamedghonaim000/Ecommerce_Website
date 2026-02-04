@@ -1,11 +1,13 @@
 import Footer from "./Components/Layout/Footer";
+import Navbar from "./Components/Layout/Navbar";
 import LoginPage from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 
 function App() {
   return (
     <>
-    <SignUp/>
+      <Navbar/>
+      <SignUp />
       <LoginPage />
       <Footer />
     </>
