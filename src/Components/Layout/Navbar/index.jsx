@@ -15,7 +15,7 @@ function Navbar() {
             <nav className='px-10 py-2 bg-[var(--main-color)] flex flex-col sm:flex-col md:flex-row lg:flex-row justify-between items-center gap-3'>
                 <div className='flex items-center'>
                     <img src={logo} alt="" width={50} />
-                    <span className='font-bold text-2xl'>Furniro</span>
+                    <span className='font-bold text-2xl'>Store</span>
                 </div>
                 <div>
                     <ul className='font-medium flex flex-col justify-center items-center sm:flex-col md:flex-row lg:flex-row gap-6'>
