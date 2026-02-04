@@ -1,16 +1,12 @@
 import SecureField from "../../Components/common/SecureField";
 import FormField from "../../Components/common/FormField";
 import { useForm } from "react-hook-form";
+import { createAccount } from "../../Api/auth";
 import { useState } from "react";
 
 export default function SignUp() {
-    const[user , setUser]=useState({
-        userName:"",
-        email:"",
-        password:"",
-        rePassword:"",
-        phone:""
-    })
+    const [loading , setLoading]=useState(false)
+    
   //   react-hook-form for validation
   const {
     register,
@@ -20,8 +16,19 @@ export default function SignUp() {
   } = useForm();
   const password = watch("password");
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log(data);
+    try{
+        setLoading(true)
+    const result = await createAccount(data)
+    console.log(result);
+    }catch(e){
+        console.log(e.message);
+    }finally{
+        setLoading(false)
+    }
+    
+    
   };
   return (
     <>
@@ -120,11 +127,14 @@ export default function SignUp() {
 
             {/* signup Button */}
             <button
-              type="submit"
-              className="w-full bg-[var(--primary-color)] text-white py-2 rounded-md font-semibold hover:bg-[var(--hover-color)] transition duration-300"
-            >
-              Sign Up
-            </button>
+            type="submit"
+            disabled={loading}
+            className={`w-full py-2 rounded-md font-semibold transition duration-300 bg-[var(--primary-color)] text-white hover:bg-[var(--hover-color)]
+            ${loading && " cursor-not-allowed" }
+          `}
+          >
+            {loading ? "Signing Up..." : "Sign Up"}
+          </button>
           </form>
 
           {/* Footer */}
