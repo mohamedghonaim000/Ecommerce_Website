@@ -3,11 +3,12 @@ import { login } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
 import SecureField from "../../Components/common/SecureField";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
-
+import { Link, useNavigate } from "react-router";
 export default function LoginPage() {
   const [loginError, setLoginerror] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate  = useNavigate()
+  
 
 
   const {
@@ -21,9 +22,8 @@ export default function LoginPage() {
     try {
       setLoading(true)
       const result = await login(data);
-      result.status == 200
-        ? localStorage.setItem("token", result.data.token)
-        : setLoginerror("Login Faild check your Eamil amd Password");
+       localStorage.setItem("token", result.data.token)
+        navigate("/")
     } catch (e) {
       setLoginerror("Login Faild check your Eamil amd Password");
       console.log(e.message);

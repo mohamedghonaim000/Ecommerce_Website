@@ -1,7 +1,7 @@
-import Navbar from "../Navbar";
-import Footer from "../Footer";
+import Navbar from "../../Components/Layout/Navbar";
+import Footer from "../../Components/Layout/Footer";
 import { Outlet } from "react-router";
-import Private from "../../Private/Private";
+import Private from "../Private/Private";
 
 function Layout() {
     return (

@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../../Pages/Home";
-import Layout from "../../Components/Layout/Layout";
+import Layout from "../Layout";
 import Contact from "../../Pages/ContactUs";
 import About from "../../Pages/About";
 import LoginPage from "../../Pages/SignIn";
 import SignUp from "../../Pages/SignUp";
 
-const router = createBrowserRouter([
+const routes = createBrowserRouter([
     {
-        path: "",
+        path: "/",
         element: <Layout />,
         children: [
             {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
 
 function AppRoutes() {
     return (
-        <RouterProvider router={router} />
+        <RouterProvider router={routes} />
     );
 }
 
