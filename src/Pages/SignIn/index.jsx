@@ -3,6 +3,7 @@ import { login } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
 import SecureField from "../../Components/common/SecureField";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 export default function LoginPage() {
   const [loginError, setLoginerror] = useState("");
@@ -90,12 +91,12 @@ export default function LoginPage() {
         {/* Footer */}
         <p className="mt-8 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className="font-medium text-[var(--primary-color)] hover:underline"
           >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
