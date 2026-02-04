@@ -1,7 +1,5 @@
-import React from 'react'
 import logo from '../../../assets/images/logo.png'
 import { NavLink } from 'react-router'
-import { FiLogIn } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 
 
