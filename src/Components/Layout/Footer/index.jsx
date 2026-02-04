@@ -19,8 +19,9 @@ export default function Footer() {
                         <ul className='space-y-6'>
                             {
                                 links.map(link => {
+                                    
                                     return (
-                                        <li >
+                                        <li key={link}>
                                             <Link to={`/${link.toLowerCase()}`}>{link}</Link>
                                         </li>
                                     );

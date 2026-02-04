@@ -1,3 +1,4 @@
+
 function NotFound() {
     return (
         <div>
@@ -7,3 +8,4 @@ function NotFound() {
 }
 
 export default NotFound;
+

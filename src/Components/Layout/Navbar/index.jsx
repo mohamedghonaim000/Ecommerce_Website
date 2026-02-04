@@ -1,14 +1,16 @@
-import React from 'react'
 import logo from '../../../assets/images/logo.png'
 import { NavLink } from 'react-router'
-import { FiLogIn } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 
 
 
 function Navbar() {
+const routes = [
+    { path: '/', name: 'Home' },
+    { path: '/contact', name: 'Contact' },
+    { path: '/about', name: 'About' },
 
-    var paths = ['Home', 'Categories', 'Products', 'Cart']
+  ]
     var token = localStorage.getItem('token')
     return (
         <>
@@ -19,15 +21,8 @@ function Navbar() {
                 </div>
                 <div>
                     <ul className='font-medium flex flex-col justify-center items-center sm:flex-col md:flex-row lg:flex-row gap-6'>
-                        {paths.map((path) => {
-                            return <NavLink key={path} to={`/${path.toLowerCase()}`}
-                                className={({ isActive }) => {
-                                    (isActive) ? "text-[var(--primary-color)] font-semibold"
-                                        : "text-gray-700 hover:text-[var(--hover-color)] transition"
-                                }
-                                }>
-                                {path}
-                            </NavLink>
+                        {routes.map((item) => {
+                            return <NavLink key={item.name} to={item.path} className={({ isActive }) => (isActive) ? "text-[var(--primary-color)] font-semibold" : "text-gray-700 hover:text-[var(--hover-color)] transition"}>{item.name}</NavLink>
                         })}
                     </ul>
                 </div>
