@@ -3,11 +3,13 @@ import { login } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
 import SecureField from "../../Components/common/SecureField";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { changeAuth } from "../../store/slices/auth";
 
 export default function LoginPage() {
   const [loginError, setLoginerror] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const dispatch= useDispatch()
 
   const {
     handleSubmit,
@@ -23,6 +25,7 @@ export default function LoginPage() {
       result.status == 200
         ? localStorage.setItem("token", result.data.token)
         : setLoginerror("Login Faild check your Eamil amd Password");
+        dispatch(changeAuth(true))
     } catch (e) {
       setLoginerror("Login Faild check your Eamil amd Password");
       console.log(e.message);
