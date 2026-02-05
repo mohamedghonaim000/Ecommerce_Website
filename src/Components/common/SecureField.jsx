@@ -11,7 +11,6 @@ const SecureField = forwardRef(
         label={label}
         type={type}
         placeholder={placeholder}
-        rightElement={<p><FaEye/></p>}
         ref={ref}
         {...props}
       />

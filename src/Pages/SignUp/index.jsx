@@ -3,6 +3,7 @@ import FormField from "../../Components/common/FormField";
 import { useForm } from "react-hook-form";
 import { createAccount } from "../../Api/auth";
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function SignUp() {
     const [loading , setLoading]=useState(false)
@@ -140,12 +141,12 @@ export default function SignUp() {
           {/* Footer */}
           <p className="mt-8 text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="font-medium text-[var(--primary-color)] hover:underline"
             >
               Login
-            </a>
+            </Link>
           </p>
         </div>
       </div>
