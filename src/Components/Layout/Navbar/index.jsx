@@ -13,14 +13,47 @@ const routes = [
     { path: '/about', name: 'About' },
 
   ]
+
+
+
+
+
+
+
+
+
+
+
+
     const isLoggedin= useSelector((state)=>state.auth.isLoggedin)
     const dispatch = useDispatch()
+
+
+
+
+
+
+
+
+
+
+
 
     const logout=()=>{
         localStorage.removeItem('token')
         dispatch(changeAuth(false))
-
     }
+
+
+
+
+
+
+
+
+
+
+
     return (
         <>
             <nav className='px-10 py-2 bg-[var(--main-color)] flex flex-col sm:flex-col md:flex-row lg:flex-row justify-between items-center gap-3'>
@@ -37,6 +70,23 @@ const routes = [
                 </div>
 
                 <div className='font-medium flex justify-center items-center gap-6'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     {isLoggedin ? <NavLink to='/' className='flex items-center gap-2 text-red-600' onClick={()=>{logout()}}><BiLogOut /></NavLink> :
                         (
                             <>
@@ -56,5 +106,7 @@ const routes = [
         </>
     )
 }
-// Home, Categories, Products, Cart, Login/Signup
+
+
+
 export default Navbar
