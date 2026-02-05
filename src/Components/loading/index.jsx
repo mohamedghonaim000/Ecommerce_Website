@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
   .custom-loader {
     width: 70px;
     height: 70px;
-    background: #ffa600;
+    background: var(--primary-color);
     border-radius: 50px;
     -webkit-mask: radial-gradient(circle 31px at 50% calc(100% + 13px),#000 95%,#0000) top 4px left 50%,
       radial-gradient(circle 31px,#000 95%,#0000) center,
