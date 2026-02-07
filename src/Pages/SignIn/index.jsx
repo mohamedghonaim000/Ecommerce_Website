@@ -3,10 +3,16 @@ import { login } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
 import SecureField from "../../Components/common/SecureField";
 import { useForm } from "react-hook-form";
-
+import { Link, useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { changeAuth } from "../../Store/Slices/auth";
 export default function LoginPage() {
   const [loginError, setLoginerror] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate  = useNavigate()
+  const dispatch = useDispatch()
+
+  
 
 
   const {
@@ -20,9 +26,9 @@ export default function LoginPage() {
     try {
       setLoading(true)
       const result = await login(data);
-      result.status == 200
-        ? localStorage.setItem("token", result.data.token)
-        : setLoginerror("Login Faild check your Eamil amd Password");
+       localStorage.setItem("token", result.data.token)
+        navigate("/")
+        dispatch(changeAuth(true))
     } catch (e) {
       setLoginerror("Login Faild check your Eamil amd Password");
       console.log(e.message);
@@ -90,12 +96,12 @@ export default function LoginPage() {
         {/* Footer */}
         <p className="mt-8 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className="font-medium text-[var(--primary-color)] hover:underline"
           >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

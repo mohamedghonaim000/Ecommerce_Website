@@ -1,17 +1,18 @@
+import { Provider } from "react-redux";
 import Footer from "./Components/Layout/Footer";
 import Navbar from "./Components/Layout/Navbar";
 import Shop from "./Pages/Shop";
 import LoginPage from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
+import store from "./Store/index";
+import AppRoutes from "./Routes/App_routes";
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <SignUp />
-      <LoginPage />
-      <Footer />
-      
+      <Provider store={store}>
+       <AppRoutes/>
+      </Provider>
     </>
   );
 }

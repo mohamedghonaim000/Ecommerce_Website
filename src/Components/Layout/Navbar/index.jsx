@@ -1,15 +1,24 @@
-import React from 'react'
 import logo from '../../../assets/images/logo.png'
 import { NavLink } from 'react-router'
-import { FiLogIn } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
+import { useDispatch, useSelector } from 'react-redux';
+import { changeAuth } from '../../../Store/Slices/auth';
 
 
 
 function Navbar() {
+const routes = [
+    { path: '/', name: 'Home' },
+    { path: '/contact', name: 'Contact' },
+    { path: '/about', name: 'About' },
 
-    var pathes = ['Home', 'Categories', 'Products', 'Cart']
-    var token = localStorage.getItem('token')
+  ]
+    const isLoggedin= useSelector((state)=>state.auth.isLoggedin)
+    const dispatch = useDispatch()
+    const logout=()=>{
+        localStorage.removeItem('token')
+        dispatch(changeAuth(false))
+    }
     return (
         <>
             <nav className='px-10 py-2 bg-[var(--main-color)] flex flex-col sm:flex-col md:flex-row lg:flex-row justify-between items-center gap-3'>
@@ -19,22 +28,20 @@ function Navbar() {
                 </div>
                 <div>
                     <ul className='font-medium flex flex-col justify-center items-center sm:flex-col md:flex-row lg:flex-row gap-6'>
-                        {pathes.map((path) => {
-                            return <NavLink key={path} to='/' className={({ isActive }) => (isActive) ? "text-[var(--primary-color)] font-semibold" : "text-gray-700 hover:text-[var(--hover-color)] transition"}>{path}</NavLink>
-
+                        {routes.map((item) => {
+                            return <NavLink key={item.name} to={item.path} className={({ isActive }) => (isActive) ? "text-[var(--primary-color)] font-semibold" : "text-gray-700 hover:text-[var(--hover-color)] transition"}>{item.name}</NavLink>
                         })}
                     </ul>
                 </div>
-
                 <div className='font-medium flex justify-center items-center gap-6'>
-                    {token ? <NavLink to='/' className='flex items-center gap-2 text-red-600'><BiLogOut /></NavLink> :
+                    {isLoggedin ? <NavLink to='/' className='flex items-center gap-2 text-red-600' onClick={()=>{logout()}}><BiLogOut /></NavLink> :
                         (
                             <>
-                                <NavLink to='/'
+                                <NavLink to='/signup'
                                     className=" text-black hover:text-[var(--hover-color)] transition">
                                     SignUp
                                 </NavLink>
-                                <NavLink to='/'
+                                <NavLink to='/login'
                                     className=" text-black hover:text-[var(--hover-color)] transition">
                                     Login
                                 </NavLink>
@@ -46,5 +53,7 @@ function Navbar() {
         </>
     )
 }
-// Home, Categories, Products, Cart, Login/Signup
+
+
+
 export default Navbar
