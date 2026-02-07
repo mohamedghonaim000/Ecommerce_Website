@@ -128,6 +128,7 @@ Optional: you can introduce environment variables for the API base URL (e.g. `VI
 - [Hadeer Aly](https://www.linkedin.com/in/hadeer-aly/)
 - [Mohamed Elfeky](https://www.linkedin.com/in/mohamed-elfeky-544274292/)
 - [Safa Mousa](https://www.linkedin.com/in/safa-mousa-b80671232/)
+- [Ahmed Hany](https://www.linkedin.com/in/ahmedhanyh)
 
 ## Contributing Guidelines
 
