@@ -43,6 +43,10 @@ export default function ProductInfo({ products, quantity, setQuantity }) {
           <span className="font-medium">Category</span> :{" "}
           {products.category?.name || "Unknown"}
         </p>
+        <p>
+          <span className="font-medium">Price</span> :{" "}
+          {products?.price+" $"|| "Unknown"}
+        </p>
       </div>
     </div>
   );

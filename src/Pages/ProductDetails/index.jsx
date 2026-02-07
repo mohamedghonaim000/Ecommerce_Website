@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { getProductById } from "../../Api/products.Api";
 import Loader from "../../Components/loading";
-import placeholder from "../../assets/images/placeholder.jpg";
 import ImagesGallery from "../../Components/common/ImagesGallery";
 import QuantitySelector from "../../Components/common/QuantitySelector";
 import ProductInfo from "../../Components/product/ProductInfo";
 import ProductDetailsTabs from "../../Components/product/ProductDetailsTabs";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -22,7 +20,7 @@ export default function ProductDetails() {
       setProducts(res.data.data);
       setLoading(false);
     });
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <Loader />;
