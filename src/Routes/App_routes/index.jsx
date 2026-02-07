@@ -5,13 +5,14 @@ import Contact from "../../Pages/ContactUs";
 import About from "../../Pages/About";
 import LoginPage from "../../Pages/SignIn";
 import SignUp from "../../Pages/SignUp";
-import Private from "../Private/Private";
-import NotFound from './../../Pages/NotFound/index';
+import RouteError from "../error/RoutesError";
+import ProtectedRoute from "../Private/ProtectedRoute";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <RouteError />,
     children: [
       {
         path: "/",
@@ -19,11 +20,19 @@ const routes = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Private><Contact /></Private>,
+        element: (
+          <ProtectedRoute>
+            <Contact />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/about",
-        element: <Private><About /></Private>,
+        element: (
+          <ProtectedRoute>
+            <About />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/login",
@@ -35,7 +44,13 @@ const routes = createBrowserRouter([
       },
       {
         path: "/*",
-        element: <NotFound/>,
+        element: (
+          <RouteError
+            status="404"
+            message="Page Not Found"
+            description="The page you are looking for does not exist."
+          />
+        ),
       },
     ],
   },
