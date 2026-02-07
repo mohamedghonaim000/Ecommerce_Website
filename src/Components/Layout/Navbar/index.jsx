@@ -12,7 +12,7 @@ const routes = [
     { path: '/contact', name: 'Contact' },
     { path: '/about', name: 'About' },
 
-  ]
+]
     const isLoggedin= useSelector((state)=>state.auth.isLoggedin)
     const dispatch = useDispatch()
     const logout=()=>{

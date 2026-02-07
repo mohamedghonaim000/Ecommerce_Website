@@ -1,6 +1,5 @@
 import { axiosInstance } from "./axiosInstance";
 
-
-export function getAllproducts(){
-    return axiosInstance.get("products")
-}
+export const getAllproducts = (page) => {
+    return axiosInstance.get(`/products?page=${page}&limit=12`);
+};
