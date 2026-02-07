@@ -7,6 +7,7 @@ import LoginPage from "../../Pages/SignIn";
 import SignUp from "../../Pages/SignUp";
 import RouteError from "../error/RoutesError";
 import ProtectedRoute from "../Private/ProtectedRoute";
+import Cart from "../../Pages/Cart";
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const routes = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <About />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <ProtectedRoute>
+            <Cart />
           </ProtectedRoute>
         ),
       },
