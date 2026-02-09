@@ -13,13 +13,9 @@ function Navbar() {
         { path: '/contact', name: 'Contact' },
         { path: '/about', name: 'About' },
 
-<<<<<<< HEAD
     ]
     const isLoggedin = useSelector((state) => state.auth.isLoggedin)
-=======
-]
-    const isLoggedin= useSelector((state)=>state.auth.isLoggedin)
->>>>>>> d31a43f2b346b6abc1a2b481fc9c7185368da68c
+
     const dispatch = useDispatch()
     const logout = () => {
         localStorage.removeItem('token')

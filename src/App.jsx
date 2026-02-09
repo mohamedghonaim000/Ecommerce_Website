@@ -5,11 +5,13 @@ import LoginPage from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import store from "./Store/index";
 import AppRoutes from "./Routes/App_routes";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
       <Provider store={store}>
+        <Toaster/>
        <AppRoutes/>
       </Provider>
     </>

@@ -7,6 +7,7 @@ import LoginPage from "../../Pages/SignIn";
 import SignUp from "../../Pages/SignUp";
 import RouteError from "../error/RoutesError";
 import ProtectedRoute from "../Private/ProtectedRoute";
+import ProductDetails from "../../Pages/ProductDetails";
 import Cart from "../../Pages/Cart";
 
 const routes = createBrowserRouter([
@@ -18,6 +19,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "product/:id",
+        element: <ProductDetails/>,
       },
       {
         path: "/contact",
