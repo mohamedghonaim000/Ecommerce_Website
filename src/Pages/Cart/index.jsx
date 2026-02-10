@@ -11,13 +11,17 @@ import { Link } from 'react-router';
 function Cart() {
 
     const [cartProducts, setCartProducts] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [cartId, setCartid] = useState("");
+    const [loading, setLoading] = useState(false)   
+    console.log(cartId);
+    
 
     const getUserCartItems = async () => {
         setLoading(true)
         try {
             const res = await getUserCart()
             setCartProducts(res.data.data.products)
+            setCartid(res.data.cartId)
         } catch (error) {
             console.log(error);
         } finally {
@@ -124,11 +128,11 @@ function Cart() {
                                     </div>
                                 </div>
 
-                                <button 
+                                <Link to={`/checkout/${cartId}`}
                                 className='w-full border border-black text-center px-3 py-2 rounded-md text-xl hover:bg-[var(--hover-color)] 
                                 hover:text-white hover:border-[var(--hover-color)] hover:text-2xl hover:opacity-95 transition-all'>
                                     Check Out
-                                </button>
+                                </Link>
                                 <Link to='/' className='text-[var(--primary-color)] underline hover:text-[var(--hover-color)] hover:no-underline transition-all'>
                                     Continue Shopping
                                 </Link>

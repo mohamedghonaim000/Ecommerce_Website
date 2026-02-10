@@ -9,6 +9,8 @@ import RouteError from "../error/RoutesError";
 import ProtectedRoute from "../Private/ProtectedRoute";
 import ProductDetails from "../../Pages/ProductDetails";
 import Cart from "../../Pages/Cart";
+import Checkout from "../../Pages/Checkout";
+import Order from "../../Pages/Order";
 
 const routes = createBrowserRouter([
   {
@@ -47,6 +49,21 @@ const routes = createBrowserRouter([
             <Cart />
           </ProtectedRoute>
         ),
+      },
+       {
+        path: "/checkout/:cartId",
+        element: (
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        ),
+      },
+       {
+        path: "/allorders",
+        
+        element:<ProtectedRoute>
+          <Order />
+        </ProtectedRoute> ,
       },
       {
         path: "/login",
