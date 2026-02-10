@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-import cartimg from '../../assets/images/cartimg.png'
 import { FaTrash } from "react-icons/fa";
 
 function CardItem({ product, onQuantityChange , onDelete}) {

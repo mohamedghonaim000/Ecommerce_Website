@@ -1,4 +1,3 @@
-import cartimg from '../../assets/images/cartimg.png'
 import CardItem from '../../Components/CardItem';
 import { FaChevronRight } from "react-icons/fa";
 import bannerImg from "../../assets/images/shopbg.png";
