@@ -1,7 +1,8 @@
-import { axiosInstance } from "./axiosInstance"
+import axios from "axios"
+// import { axiosInstance } from "./axiosInstance"
 
 export const getUserCart=()=>{
-    return axiosInstance.get('/cart',
+    return axios.get('https://ecommerce.routemisr.com/api/v2/cart',
         {
             headers:{
                 token:localStorage.getItem('token')
@@ -11,29 +12,34 @@ export const getUserCart=()=>{
 }
 
 export const addProductToCart=(productId)=>{
-    return axiosInstance.post('/cart',
+    return axios.post('https://ecommerce.routemisr.com/api/v2/cart',
         {productId},
         {
             headers:{
-                token:localStorage.getItem('token')
+                token:localStorage.getItem('token'),
+                'Content-Type':'application/json'
             }
         }
     )
 }
 
 export const updateCartItem = (productId, quantity) => {
-    return axiosInstance.put(`/cart/${productId}`,
-        {quantity},
+    return axios.put(`https://ecommerce.routemisr.com/api/v2/cart/${productId}`,
+        {"count":quantity},
         {
             headers:{
-                token:localStorage.getItem('token')
+                token:localStorage.getItem('token'),
+                'Content-Type':'application/json'
+
+
+
             }
         }
     )
 }
 
 export const removeCartItem = (productId) => {
-    return axiosInstance.delete(`/cart/${productId}`,
+    return axios.delete(`https://ecommerce.routemisr.com/api/v2/cart/${productId}`,
         {
             headers:{
                 token:localStorage.getItem('token')

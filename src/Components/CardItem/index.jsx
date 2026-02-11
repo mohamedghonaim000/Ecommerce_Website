@@ -19,10 +19,10 @@ function CardItem({ product, onQuantityChange , onDelete}) {
                             <label htmlFor="quantity" className="sr-only">Quantity</label>
                             <div className='flex items-center border rounded-md'>
                                 <button className='px-2 py-1 text-lg font-semibold text-[var(--primary-color)]'
-                                onClick={() => onQuantityChange(product._id, product.count - 1)}>-</button>
+                                onClick={() => onQuantityChange(product.product._id, product.count - 1)}>-</button>
                                 <span className='px-2 py-1'>{product.count}</span>
                                 <button className='px-2 py-1 text-lg font-semibold text-[var(--primary-color)]'
-                                onClick={() => onQuantityChange(product._id, product.count + 1)}>+</button>
+                                onClick={() => onQuantityChange(product.product._id, product.count + 1)}>+</button>
                             </div>
                             <button aria-label="Remove item" title="Remove item" 
                             className='ml-3 p-2 rounded-md hover:bg-gray-100 transition-colors text-[var(--primary-color)]'

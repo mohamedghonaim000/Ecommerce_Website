@@ -12,9 +12,9 @@ function Cart() {
 
     const [cartProducts, setCartProducts] = useState([]);
     const [cartId, setCartid] = useState("");
-    const [loading, setLoading] = useState(false)   
+    const [loading, setLoading] = useState(false)
     console.log(cartId);
-    
+
 
     const getUserCartItems = async () => {
         setLoading(true)
@@ -35,14 +35,16 @@ function Cart() {
     const handleQuantityChange = async (productId, quantity) => {
         setLoading(true)
         try {
-            const res = await updateCartItem(productId, quantity)
-            console.log(res);
-           
+            const res = await updateCartItem(productId, Number(quantity))
+            await getUserCartItems()
+            toast.success('Quantity updated successfully')
+
         } catch (error) {
             console.log(error);
+            toast.error('Failed to update quantity')
+
         } finally {
             setLoading(false)
-            getUserCartItems()
 
         }
     }
@@ -53,23 +55,21 @@ function Cart() {
         try {
             const res = await removeCartItem(productId)
             console.log(res);
-             setCartProducts((prevProduct)=>
-            prevProduct.filter((item)=>item.product._id !== productId))
-            toast.success('Item removed successfully')
+            await getUserCartItems()
 
+            toast.success('Item removed successfully')
         } catch (error) {
             console.log(error);
             toast.error('Failed to remove item')
         } finally {
             setLoading(false)
-            getUserCartItems()
         }
     }
 
-    const totalPrice= cartProducts.reduce((total , item)=>{
-        return total +item.price * item.count
-     },0)
-     console.log(totalPrice);
+    const totalPrice = cartProducts.reduce((total, item) => {
+        return total + item.price 
+    }, 0)
+    console.log(totalPrice);
 
     useEffect(() => {
         getUserCartItems()
@@ -106,10 +106,10 @@ function Cart() {
                     <div className="col-span-1 sm:col-span-3 ml-10">
 
                         {cartProducts.map((item) => {
-                            return <CardItem key={item._id} 
-                            product={item} 
-                            onQuantityChange={handleQuantityChange} 
-                            onDelete={deleteCartItem} 
+                            return <CardItem key={item._id}
+                                product={item}
+                                onQuantityChange={handleQuantityChange}
+                                onDelete={deleteCartItem}
                             />
                         })}
                     </div>
@@ -129,7 +129,7 @@ function Cart() {
                                 </div>
 
                                 <Link to={`/checkout/${cartId}`}
-                                className='w-full border border-black text-center px-3 py-2 rounded-md text-xl hover:bg-[var(--hover-color)] 
+                                    className='w-full border border-black text-center px-3 py-2 rounded-md text-xl hover:bg-[var(--hover-color)] 
                                 hover:text-white hover:border-[var(--hover-color)] hover:text-2xl hover:opacity-95 transition-all'>
                                     Check Out
                                 </Link>
