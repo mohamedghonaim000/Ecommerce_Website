@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { forgetPassword } from "../../Api/auth";
+import {  verifyCode } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router";
-export default function Forgetpassword() {
-  const [forgetError, setForgeterror] = useState("");
+export default function Verfiycode() {
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   
@@ -20,10 +20,10 @@ export default function Forgetpassword() {
     console.log(data);
     try {
       setLoading(true)
-      const result = await forgetPassword(data);
-      result&&Navigate("/verifycode")
+      const result = await verifyCode(data);
+      result&&Navigate("/")
     } catch (e) {
-      setForgeterror("This Email dosen`t Exisit");
+      setError("This code isn`t valid");
       console.log(e.message);
     }finally{
       setLoading(false)
@@ -34,29 +34,25 @@ export default function Forgetpassword() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-          Forgot Password{" "}
+          Verify Code{" "}
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Email Field */}
+          {/* code Field */}
           <FormField
-            label="Email"
-            type="email"
-            placeholder="name@example.com"
-            {...register("email", {
-              required: "The Email Is Required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid Email Format",
-              },
+            label="Code"
+            type="text"
+            placeholder="- - - - - -"
+            {...register("code", {
+              required: "The code Is Required",
             })}
           />
-          {errors.email && (
-            <small className="text-red-600">{errors.email.message}</small>
+          {errors.code && (
+            <small className="text-red-600">{errors.code.message}</small>
           )}
 
 
-          {/* Login Button */}
+          {/* submit Button */}
           <button
             type="submit"
             disabled={loading}
@@ -64,10 +60,10 @@ export default function Forgetpassword() {
             ${loading && " cursor-not-allowed" }
           `}
           >
-            {loading ? "Sending code..." : "Send Code"}
+            {loading ? "Verfing code..." : "Verfiy Code"}
           </button>
-          {forgetError && (
-            <small className="text-red-600 mt-2">{forgetError}</small>
+          {error && (
+            <small className="text-red-600 mt-2">{error}</small>
           )}
         </form>
 
@@ -75,10 +71,10 @@ export default function Forgetpassword() {
         <p className="mt-8 text-center text-sm text-gray-600">
           Back to {" "}
           <Link
-            to="/login"
+            to="/forgetpassword"
             className="font-medium text-[var(--primary-color)] hover:underline"
           >
-            Login
+            Forgot Password
           </Link>
         </p>
       </div>

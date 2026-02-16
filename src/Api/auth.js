@@ -22,3 +22,9 @@ export function forgetPassword(data){
     "email":data.email
   })
 }
+
+export function verifyCode(data){
+  return axiosInstance.post("auth/verifyResetCode",{
+    "email":data.code
+  })
+}
