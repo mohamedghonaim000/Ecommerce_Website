@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { login } from "../../Api/auth";
+import { forgetPassword } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
-import SecureField from "../../Components/common/SecureField";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
-import { changeAuth } from "../../Store/Slices/auth";
-export default function LoginPage() {
-  const [loginError, setLoginerror] = useState("");
+import { Link, Navigate } from "react-router";
+export default function Forgetpassword() {
+  const [forgetError, setForgeterror] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate  = useNavigate()
-  const dispatch = useDispatch()
 
   
 
@@ -25,12 +20,10 @@ export default function LoginPage() {
     console.log(data);
     try {
       setLoading(true)
-      const result = await login(data);
-       localStorage.setItem("token", result.data.token)
-        navigate("/")
-        dispatch(changeAuth(true))
+      const result = await forgetPassword(data);
+      result&&Navigate("/")
     } catch (e) {
-      setLoginerror("Login Faild check your Eamil amd Password");
+      setForgeterror("This Email dosen`t Exisit");
       console.log(e.message);
     }finally{
       setLoading(false)
@@ -41,10 +34,10 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-          Login{" "}
+          Forgot Password{" "}
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Email Field */}
           <FormField
             label="Email"
@@ -62,22 +55,6 @@ export default function LoginPage() {
             <small className="text-red-600">{errors.email.message}</small>
           )}
 
-          {/* Password Field */}
-          <SecureField
-            label="Password"
-            type="password"
-            {...register("password", {
-              required: "Password Is Required",
-              minLength: {
-                value: 6,
-                message: "The password Length Must be More than 5 letters",
-              },
-            })}
-          />
-          {errors.password && (
-            <small className="text-red-600">{errors.password.message}</small>
-          )}
-          <Link to={"/forgetpassword"}><div className="forgot flex justify-end text-[var(--primary-color)]">Forgot Password?</div></Link>
 
           {/* Login Button */}
           <button
@@ -87,21 +64,21 @@ export default function LoginPage() {
             ${loading && " cursor-not-allowed" }
           `}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Sending code..." : "Send Code"}
           </button>
-          {loginError && (
-            <small className="text-red-600 mt-2">{loginError}</small>
+          {forgetError && (
+            <small className="text-red-600 mt-2">{forgetError}</small>
           )}
         </form>
 
         {/* Footer */}
         <p className="mt-8 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
+          Back to {" "}
           <Link
-            to="/signup"
+            to="/login"
             className="font-medium text-[var(--primary-color)] hover:underline"
           >
-            Sign Up
+            Login
           </Link>
         </p>
       </div>

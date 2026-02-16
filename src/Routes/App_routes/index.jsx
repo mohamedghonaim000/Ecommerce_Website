@@ -11,6 +11,7 @@ import ProductDetails from "../../Pages/ProductDetails";
 import Cart from "../../Pages/Cart";
 import Checkout from "../../Pages/Checkout";
 import Order from "../../Pages/Order";
+import Forgetpassword from "../../Pages/Forget-Password";
 
 const routes = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const routes = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/forgetpassword",
+        element: <Forgetpassword />,
       },
       {
         path: "/signup",

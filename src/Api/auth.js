@@ -16,3 +16,9 @@ export function login(data) {
     password: data.password,
   });
 }
+
+export function forgetPassword(data){
+  return axiosInstance.post("auth/forgotPasswords",{
+    "email":data.email
+  })
+}
