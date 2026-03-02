@@ -17,4 +17,14 @@ export function login(data) {
   });
 }
 
+export function forgetPassword(data){
+  return axiosInstance.post("auth/forgotPasswords",{
+    "email":data.email
+  })
+}
 
+export function verifyCode(data){
+  return axiosInstance.post("auth/verifyResetCode",{
+    "email":data.code
+  })
+}

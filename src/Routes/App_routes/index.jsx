@@ -11,6 +11,9 @@ import ProductDetails from "../../Pages/ProductDetails";
 import Cart from "../../Pages/Cart";
 import Checkout from "../../Pages/Checkout";
 import Order from "../../Pages/Order";
+import Forgetpassword from "../../Pages/Forget-Password";
+import Verfiycode from "../../Pages/verfiy-Code";
+import Profile from "../../Pages/Profile";
 
 const routes = createBrowserRouter([
   {
@@ -54,7 +57,7 @@ const routes = createBrowserRouter([
         path: "/profile",
         element: (
           <ProtectedRoute>
-            <Cart />
+            <Profile />
           </ProtectedRoute>
         ),
       },
@@ -75,6 +78,14 @@ const routes = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/forgetpassword",
+        element: <Forgetpassword />,
+      },
+       {
+        path: "/verifycode",
+        element: <Verfiycode />,
       },
       {
         path: "/signup",
