@@ -4,6 +4,7 @@ import { BiLogOut } from "react-icons/bi";
 import { useDispatch, useSelector } from 'react-redux';
 import { changeAuth } from '../../../Store/Slices/auth';
 import { CiShoppingCart } from "react-icons/ci";
+import { IoIosPerson } from "react-icons/io";
 
 
 
@@ -44,7 +45,13 @@ function Navbar() {
                                 style={{ filter: 'drop-shadow(3px 3px 8px var(--shadow-color)) drop-shadow(0px 3px 10px rgba(121, 85, 29))' }}
                             >
                                 <CiShoppingCart />
-                            </NavLink>                            
+                            </NavLink>   
+                            <NavLink
+                                to='/profile'
+                                className='flex items-center gap-2 text-[var(--primary-color)] text-2xl font-bold'
+                            >
+                                <IoIosPerson />
+                            </NavLink>                          
                             <NavLink to='/' className='flex items-center gap-2 text-red-600' onClick={() => { logout() }}>
                                 <BiLogOut />
                             </NavLink>

@@ -30,7 +30,7 @@ export default function LoginPage() {
         navigate("/")
         dispatch(changeAuth(true))
     } catch (e) {
-      setLoginerror("Login Faild check your Eamil amd Password");
+      setLoginerror("Login Faild check your Eamil and Password");
       console.log(e.message);
     }finally{
       setLoading(false)
@@ -91,6 +91,7 @@ export default function LoginPage() {
           {loginError && (
             <small className="text-red-600 mt-2">{loginError}</small>
           )}
+
         </form>
 
         {/* Footer */}

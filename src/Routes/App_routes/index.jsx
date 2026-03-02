@@ -50,6 +50,14 @@ const routes = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ),
+      },
        {
         path: "/checkout/:cartId",
         element: (
@@ -60,7 +68,6 @@ const routes = createBrowserRouter([
       },
        {
         path: "/allorders",
-        
         element:<ProtectedRoute>
           <Order />
         </ProtectedRoute> ,
