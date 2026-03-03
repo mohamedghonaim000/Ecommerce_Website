@@ -2,12 +2,12 @@ import { useState } from "react";
 import { forgetPassword } from "../../Api/auth";
 import FormField from "../../Components/common/FormField";
 import { useForm } from "react-hook-form";
-import { Link, Navigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 export default function Forgetpassword() {
   const [forgetError, setForgeterror] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
-  
 
 
   const {
@@ -21,9 +21,9 @@ export default function Forgetpassword() {
     try {
       setLoading(true)
       const result = await forgetPassword(data);
-      result&&Navigate("/verifycode")
+      result&&navigate("/verifycode")
     } catch (e) {
-      setForgeterror("This Email dosen`t Exisit");
+      setForgeterror("This Email dosen`t Exist");
       console.log(e.message);
     }finally{
       setLoading(false)

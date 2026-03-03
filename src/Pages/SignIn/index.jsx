@@ -9,10 +9,10 @@ import { changeAuth } from "../../Store/Slices/auth";
 export default function LoginPage() {
   const [loginError, setLoginerror] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate  = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  
+
 
 
   const {
@@ -26,13 +26,13 @@ export default function LoginPage() {
     try {
       setLoading(true)
       const result = await login(data);
-       localStorage.setItem("token", result.data.token)
-        navigate("/")
-        dispatch(changeAuth(true))
+      localStorage.setItem("token", result.data.token)
+      navigate("/")
+      dispatch(changeAuth(true))
     } catch (e) {
       setLoginerror("Login Faild check your Eamil and Password");
       console.log(e.message);
-    }finally{
+    } finally {
       setLoading(false)
     }
   };
@@ -84,7 +84,7 @@ export default function LoginPage() {
             type="submit"
             disabled={loading}
             className={`w-full py-2 rounded-md font-semibold transition duration-300 bg-[var(--primary-color)] text-white hover:bg-[var(--hover-color)]
-            ${loading && " cursor-not-allowed" }
+            ${loading && " cursor-not-allowed"}
           `}
           >
             {loading ? "Logging in..." : "Login"}
